@@ -12,9 +12,10 @@ export function Hero() {
         transition={{ duration: 1.2, ease: [0.23, 1, 0.32, 1] }}
         className="relative w-full max-w-6xl"
       >
-        <h1 className="font-[family-name:var(--font-syne)] text-[clamp(3.5rem,14vw,11rem)] font-extrabold uppercase leading-[0.85] tracking-tight select-none">
+        <h1 className="font-[family-name:var(--font-syne)] text-[clamp(2rem,8vw,7rem)] font-extrabold uppercase leading-[0.85] tracking-tight select-none">
           <span className="block">YOANN</span>
-          <span className="block">DACOSTA</span>
+          <span className="block">DOS SANTOS</span>
+          <span className="block">DA COSTA</span>
         </h1>
 
         <img
