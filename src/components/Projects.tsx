@@ -68,7 +68,14 @@ export function Projects() {
             data-cursor="hover"
           >
             <div className="number-container brutal-border relative flex aspect-[16/10] items-center justify-center overflow-hidden border-white bg-[#1a1a1a] transition-all duration-500 group-hover:border-accent group-hover:bg-accent">
-              <span className="number-text font-[family-name:var(--font-syne)] px-5 text-center text-6xl uppercase opacity-10 transition-all duration-500 group-hover:scale-110 group-hover:text-black group-hover:opacity-100">
+              {project.image ? (
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="absolute inset-0 h-full w-full object-cover opacity-60 transition-opacity duration-500 group-hover:opacity-80"
+                />
+              ) : null}
+              <span className="number-text relative font-[family-name:var(--font-syne)] px-5 text-center text-6xl uppercase opacity-10 transition-all duration-500 group-hover:scale-110 group-hover:text-black group-hover:opacity-100">
                 {project.title}
               </span>
             </div>
@@ -79,6 +86,17 @@ export function Projects() {
               <span className="font-mono text-[10px] font-bold uppercase tracking-widest opacity-40">
                 {project.stack}
               </span>
+              {project.url ? (
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 w-fit font-mono text-[10px] font-bold uppercase tracking-widest text-accent underline underline-offset-4 opacity-70 hover:opacity-100"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  Voir le site →
+                </a>
+              ) : null}
             </div>
           </div>
         ))}

@@ -56,6 +56,7 @@ export type Project = {
   hook: string;
   result: string;
   url?: string;
+  image?: string;
   featured?: boolean;
   span?: "wide" | "tall" | "default";
 };
