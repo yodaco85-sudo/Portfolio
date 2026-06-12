@@ -1,0 +1,201 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f4f0e6;
+  --fg: #0a0a0a;
+  --accent: #d4ff00;
+  --accent-2: #ff3d00;
+  --muted: #5c5c5c;
+  --border: #0a0a0a;
+  --surface: #ffffff;
+  --strip-speed: 45s;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-surface: var(--surface);
+  --font-display: var(--font-syne);
+  --font-mono: var(--font-ibm-plex-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-ibm-plex-mono), ui-monospace, monospace;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body.custom-cursor-active,
+body.custom-cursor-active a,
+body.custom-cursor-active button {
+  cursor: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--fg);
+}
+
+.brutal-border {
+  border: 3px solid var(--border);
+}
+
+.brutal-shadow {
+  box-shadow: 6px 6px 0 var(--border);
+}
+
+.brutal-shadow-sm {
+  box-shadow: 4px 4px 0 var(--border);
+}
+
+.brutal-shadow-hover:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--border);
+}
+
+/* ─── Split text (Ponpon-style reveal) ─── */
+.split-text {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.split-text__char {
+  display: inline-block;
+  transition:
+    opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── Magnetic button ─── */
+.magnetic-btn {
+  display: inline-flex;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── Project cards 3D tilt ─── */
+.project-card {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 4px 4px 0 var(--border);
+}
+
+.project-card:hover {
+  box-shadow: 8px 8px 0 var(--border);
+}
+
+.project-card__shine {
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(212, 255, 0, 0.15),
+    transparent 40%
+  );
+}
+
+.project-card:hover .project-card__shine {
+  opacity: 1;
+}
+
+/* ─── Marquee stats ─── */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+/* ─── Glenn-style project strip ─── */
+@keyframes strip-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-33.333%);
+  }
+}
+
+.project-strip__track {
+  animation: strip-scroll var(--strip-speed) linear infinite;
+}
+
+.project-strip__track[data-speed="paused"] {
+  animation-play-state: paused;
+}
+
+.project-strip__track[data-speed="fast"] {
+  --strip-speed: 18s;
+}
+
+.project-strip__item {
+  opacity: 0.55;
+}
+
+.project-strip__item:hover {
+  opacity: 1;
+}
+
+/* ─── Intro gate ─── */
+.intro-gate {
+  will-change: transform, opacity;
+}
+
+/* ─── Grain animation ─── */
+@keyframes grain-shift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-2%, -3%);
+  }
+  50% {
+    transform: translate(3%, 1%);
+  }
+  75% {
+    transform: translate(-1%, 4%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .project-strip__track,
+  [class*="grain-shift"] {
+    animation: none !important;
+  }
+
+  .brutal-shadow-hover:hover {
+    transform: none;
+  }
+
+  .split-text__char {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  body.custom-cursor-active,
+  body.custom-cursor-active a,
+  body.custom-cursor-active button {
+    cursor: auto;
+  }
+}
