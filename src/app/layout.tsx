@@ -15,11 +15,11 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Yoann Dacosta — Product Builder NoCode & IA",
+  title: "Yoann Dos Santos Da Costa — Product Builder NoCode & IA",
   description:
-    "Portfolio de Yoann Dacosta — Product Builder NoCode & IA. Sites web, automatisations n8n, agents IA. En recherche d'alternance — Alegria.academy.",
+    "Portfolio de Yoann Dos Santos Da Costa — Product Builder NoCode & IA. Sites web, automatisations n8n, agents IA. En recherche d'alternance — Alegria.academy.",
   openGraph: {
-    title: "Yoann Dacosta — Product Builder NoCode & IA",
+    title: "Yoann Dos Santos Da Costa — Product Builder NoCode & IA",
     description:
       "De la mer à l'IA : sites web, automatisations n8n, agents IA multi-agents.",
     type: "website",
@@ -34,6 +34,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className={`${syne.variable} ${ibmPlexMono.variable}`}>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
+        />
+      </head>
       <body className="min-h-screen">{children}</body>
     </html>
   );

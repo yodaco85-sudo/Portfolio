@@ -8,6 +8,7 @@
   --muted: #5c5c5c;
   --border: #0a0a0a;
   --surface: #ffffff;
+  --fluo-green: #39ff14;
   --strip-speed: 45s;
 }
 
@@ -16,6 +17,7 @@
   --color-fg: var(--fg);
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
+  --color-fluo-green: var(--fluo-green);
   --color-muted: var(--muted);
   --color-border: var(--border);
   --color-surface: var(--surface);
@@ -53,20 +55,24 @@ body.custom-cursor-active button {
 }
 
 .brutal-border {
-  border: 3px solid var(--border);
+  border: 4px solid var(--border);
 }
 
 .brutal-shadow {
-  box-shadow: 6px 6px 0 var(--border);
+  box-shadow: 8px 8px 0 var(--border);
 }
 
 .brutal-shadow-sm {
   box-shadow: 4px 4px 0 var(--border);
 }
 
+.brutal-shadow-lg {
+  box-shadow: 16px 16px 0 var(--border);
+}
+
 .brutal-shadow-hover:hover {
   transform: translate(-2px, -2px);
-  box-shadow: 8px 8px 0 var(--border);
+  box-shadow: 10px 10px 0 var(--border);
 }
 
 /* ─── Split text (Ponpon-style reveal) ─── */
@@ -198,4 +204,16 @@ body.custom-cursor-active button {
   body.custom-cursor-active button {
     cursor: auto;
   }
+}
+
+/* ─── Gooey Effect ─── */
+.gooey-container {
+  filter: url("#gooey-filter");
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid var(--fg);
+  will-change: transform, width, height;
 }

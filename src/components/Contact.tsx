@@ -62,7 +62,7 @@ export function Contact() {
             <p className="mt-4 text-xs text-muted">{alternance.rncp}</p>
 
             <MagneticButton
-              href={`mailto:${contact.email}?subject=Alternance%20Alegria%20—%20Yoann%20Dacosta`}
+              href={`mailto:${contact.email}?subject=Alternance%20Alegria%20—%20Yoann%20Dos%20Santos%20da%20Costa`}
               className="mt-8 brutal-border brutal-shadow-sm bg-fg px-6 py-3 text-xs font-bold uppercase tracking-widest text-bg"
             >
               Proposer une alternance

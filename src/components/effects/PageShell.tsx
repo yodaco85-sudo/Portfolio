@@ -1,8 +1,11 @@
 "use client";
 
-import { type ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
+import Lenis from "lenis";
 import { CustomCursor } from "./CustomCursor";
 import { GrainOverlay } from "./GrainOverlay";
+import { FearfulSmoke } from "./FearfulSmoke";
+import { GooeyFilter } from "./GooeyFilter";
 import { IntroGate, useIntroGate } from "./IntroGate";
 
 type PageShellProps = {
@@ -12,9 +15,26 @@ type PageShellProps = {
 export function PageShell({ children }: PageShellProps) {
   const { showIntro, entered, onEnter } = useIntroGate();
 
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   return (
     <>
       <CustomCursor />
+      <FearfulSmoke />
+      <GooeyFilter />
       <GrainOverlay />
       {showIntro && <IntroGate onEnter={onEnter} />}
       <div

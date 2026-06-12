@@ -1,6 +1,6 @@
 export const profile = {
-  name: "Yoann Dacosta",
-  fullName: "Yoann Berth Dos Santos Dacosta",
+  name: "Yoann Dos Santos Da Costa",
+  fullName: "Yoann Berth Dos Santos Da Costa",
   role: "Product Builder",
   tagline: "NoCode · IA · Automatisation",
   pitch:
@@ -105,13 +105,13 @@ export const projects: Project[] = [
     result: "Stack complète Docker — démo sur demande.",
   },
   {
-    id: "crm",
-    title: "CRM NoCode",
-    client: "Besmara · Production",
+    id: "alter-prospect",
+    title: "Alter Prospect",
+    client: "CRM · Besmara",
     type: "nocode",
-    stack: "Airtable · Notion · n8n",
-    hook: "Pipeline commercial + relances automatisées.",
-    result: "Utilisé au quotidien pour la gestion clients.",
+    stack: "Supabase · Next.js · n8n",
+    hook: "CRM sur-mesure : qualification GPCT, scoring prospect, relances automatisées.",
+    result: "Déployé en production — pipeline commercial actif.",
   },
   {
     id: "besmara",

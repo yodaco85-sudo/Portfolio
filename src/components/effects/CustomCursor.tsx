@@ -1,95 +1,102 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, useSpring } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import gsap from "gsap";
 
 export function CustomCursor() {
   const reduced = usePrefersReducedMotion();
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-
-  // Springs for smooth trailing
-  const springConfig = { damping: 25, stiffness: 200, mass: 0.5 };
-  const cursorX = useSpring(0, springConfig);
-  const cursorY = useSpring(0, springConfig);
 
   useEffect(() => {
     if (reduced) return;
+
     const fine = window.matchMedia("(pointer: fine)").matches;
     if (!fine) return;
 
-    document.body.classList.add("custom-cursor-active");
     setIsVisible(true);
+    document.body.classList.add("custom-cursor-active");
 
-    const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
-      
+    const dot = dotRef.current;
+    const ring = ringRef.current;
+
+    if (!dot || !ring) return;
+
+    // Quick setters for performance
+    const setDotX = gsap.quickSetter(dot, "x", "px");
+    const setDotY = gsap.quickSetter(dot, "y", "px");
+    
+    // Spring for smooth ring lag
+    const ringX = gsap.quickTo(ring, "x", { duration: 0.4, ease: "power3" });
+    const ringY = gsap.quickTo(ring, "y", { duration: 0.4, ease: "power3" });
+
+    const onMouseMove = (e: MouseEvent) => {
+      setDotX(e.clientX);
+      setDotY(e.clientY);
+      ringX(e.clientX);
+      ringY(e.clientY);
+
       const target = e.target as HTMLElement;
-      if (
-        target.closest("a, button, [data-cursor='hover'], [data-magnetic='true'], .project-strip__item")
-      ) {
-        setIsHovering(true);
+      const isHoverable = target.closest("a, button, .project-card, .sticker, [data-cursor='hover']");
+      
+      if (isHoverable) {
+        gsap.to(ring, { 
+          width: 64, 
+          height: 64, 
+          backgroundColor: 'rgba(57, 255, 20, 0.15)', 
+          duration: 0.3,
+          ease: "power2.out"
+        });
+        gsap.to(dot, { scale: 0, duration: 0.2 });
       } else {
-        setIsHovering(false);
+        gsap.to(ring, { 
+          width: 36, 
+          height: 36, 
+          backgroundColor: 'transparent', 
+          duration: 0.3,
+          ease: "power2.out"
+        });
+        gsap.to(dot, { scale: 1, duration: 0.2 });
       }
     };
 
-    const onLeave = () => setIsVisible(false);
-    const onEnter = () => setIsVisible(true);
+    const onMouseLeave = () => setIsVisible(false);
+    const onMouseEnter = () => setIsVisible(true);
 
-    window.addEventListener("mousemove", updateMousePosition);
-    document.addEventListener("mouseleave", onLeave);
-    document.addEventListener("mouseenter", onEnter);
+    window.addEventListener("mousemove", onMouseMove);
+    document.addEventListener("mouseleave", onMouseLeave);
+    document.addEventListener("mouseenter", onMouseEnter);
 
     return () => {
       document.body.classList.remove("custom-cursor-active");
-      window.removeEventListener("mousemove", updateMousePosition);
-      document.removeEventListener("mouseleave", onLeave);
-      document.removeEventListener("mouseenter", onEnter);
+      window.removeEventListener("mousemove", onMouseMove);
+      document.removeEventListener("mouseleave", onMouseLeave);
+      document.removeEventListener("mouseenter", onMouseEnter);
     };
-  }, [reduced, cursorX, cursorY]);
+  }, [reduced]);
 
   if (reduced || !isVisible) return null;
 
   return (
     <>
-      {/* Main fluorescent dot */}
-      <motion.div
-        className="pointer-events-none fixed left-0 top-0 z-[9999] h-2 w-2 rounded-full bg-[#39ff14] md:block"
+      <div
+        ref={dotRef}
+        id="cursor-dot"
+        className="pointer-events-none fixed left-0 top-0 z-[10000] h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#39ff14]"
         style={{
           boxShadow: "0 0 10px #39ff14, 0 0 20px #39ff14",
-          x: mousePosition.x - 4, // Center the 8px dot
-          y: mousePosition.y - 4,
         }}
-        animate={{
-          scale: isHovering ? 0 : 1,
-          opacity: isHovering ? 0 : 1
-        }}
-        transition={{ duration: 0.2 }}
         aria-hidden="true"
       />
-      
-      {/* Trailing luminous ring */}
-      <motion.div
-        className="pointer-events-none fixed left-0 top-0 z-[9998] rounded-full border-2 border-[#39ff14] md:block"
+      <div
+        ref={ringRef}
+        id="cursor-ring"
+        className="pointer-events-none fixed left-0 top-0 z-[9999] h-9 w-9 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-[#39ff14]"
         style={{
           boxShadow: "0 0 15px rgba(57, 255, 20, 0.4), inset 0 0 10px rgba(57, 255, 20, 0.2)",
-          x: cursorX,
-          y: cursorY,
-          translateX: "-50%",
-          translateY: "-50%",
         }}
-        initial={{ width: 36, height: 36 }}
-        animate={{
-          width: isHovering ? 64 : 36,
-          height: isHovering ? 64 : 36,
-          backgroundColor: isHovering ? "rgba(57, 255, 20, 0.15)" : "transparent",
-        }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
         aria-hidden="true"
       />
     </>
