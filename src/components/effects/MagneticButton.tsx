@@ -40,8 +40,8 @@ export function MagneticButton({
 
   const { x, y } = position;
 
-  const motionProps = {
-    ref: ref as any,
+  const motionProps: any = {
+    ref: ref,
     onMouseMove: handleMove,
     onMouseLeave: handleLeave,
     onClick,
