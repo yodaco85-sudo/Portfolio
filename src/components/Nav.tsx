@@ -10,11 +10,12 @@ export function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b-[3px] border-border bg-bg">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
-        <a
-          href="#top"
-          className="font-[family-name:var(--font-syne)] text-sm font-extrabold uppercase tracking-tight md:text-base"
-        >
-          {profile.name}
+        <a href="#top" className="flex items-center">
+          <img
+            src="/besmara-wordmark-teal.svg"
+            alt="Besmara"
+            className="h-7 w-auto"
+          />
         </a>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Navigation">

@@ -113,6 +113,7 @@ export const projects: Project[] = [
     stack: "Supabase · Next.js · n8n",
     hook: "CRM sur-mesure : qualification GPCT, scoring prospect, relances automatisées.",
     result: "Déployé en production — pipeline commercial actif.",
+    image: "/projects/alter-prospect-dashboard.png",
   },
   {
     id: "besmara",
