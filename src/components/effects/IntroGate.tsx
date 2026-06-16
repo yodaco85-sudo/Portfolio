@@ -45,6 +45,11 @@ export function IntroGate({ onEnter }: IntroGateProps) {
     window.setTimeout(onEnter, 900);
   };
 
+  const handleSkip = () => {
+    sessionStorage.setItem(STORAGE_KEY, "1");
+    onEnter();
+  };
+
   const [first, ...rest] = profile.name.split(" ");
 
   return (
@@ -96,7 +101,7 @@ export function IntroGate({ onEnter }: IntroGateProps) {
         </MagneticButton>
         <button
           type="button"
-          onClick={handleEnter}
+          onClick={handleSkip}
           className="mt-4 block w-full text-center text-[10px] uppercase tracking-widest text-muted transition-colors hover:text-fg"
           data-cursor="hover"
         >

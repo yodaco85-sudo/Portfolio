@@ -69,19 +69,19 @@ export function Stack() {
 
           <div className="mt-12 flex items-center justify-between border-t-2 border-black/10 pt-8">
             <div className="flex gap-6">
-              <a href="#" className="transition-colors hover:text-accent-2">
+              <a href="https://github.com/yodaco85-sudo" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent-2">
                 <i className="ti ti-brand-github text-4xl"></i>
               </a>
               <a href={`mailto:${profile.contact.email}`} className="transition-colors hover:text-accent-2">
                 <i className="ti ti-mail text-4xl"></i>
               </a>
-              <a href="#" className="transition-colors hover:text-accent-2">
+              <a href="https://www.linkedin.com/in/besmaracontact" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent-2">
                 <i className="ti ti-brand-linkedin text-4xl"></i>
               </a>
             </div>
-            <button className="font-bold border-b-4 border-black text-lg uppercase transition-colors hover:text-accent-2">
+            <a href="/contact" className="font-bold border-b-4 border-black text-lg uppercase transition-colors hover:text-accent-2">
               PROJET_INITIATION.EXE
-            </button>
+            </a>
           </div>
         </motion.div>
 
@@ -119,14 +119,6 @@ export function Stack() {
             </Sticker>
           ))}
 
-          <div className="mt-12 w-full rounded-xl border-2 border-dashed border-black/30 bg-black/5 p-8">
-            <div className="flex items-center gap-3">
-              <span className="h-4 w-4 animate-pulse rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.4)]"></span>
-              <span className="text-sm font-bold uppercase">
-                {profile.alternance.status} — {profile.alternance.school}
-              </span>
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>

@@ -29,7 +29,7 @@ export function Footer() {
         <div className="mt-32 flex flex-col items-center justify-between gap-8 border-t-4 border-black pt-12 font-mono text-xs font-bold uppercase opacity-60 md:flex-row">
           <div>© 2026 {profile.name} — {profile.location.toUpperCase()}</div>
           <div className="flex gap-8">
-            <a href="https://linkedin.com/in/yoann-dos-santos-da-costa" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent-2">
+            <a href="https://www.linkedin.com/in/besmaracontact" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent-2">
               LinkedIn
             </a>
             <a href="https://github.com/yodaco85-sudo" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent-2">
