@@ -1,0 +1,10 @@
+id: portfolio-main
+status: active
+purpose: portfolio web Next.js
+owner: Yoann
+path: W-SPACE/projects/Portfolio-main
+last_reviewed: 2026-07-19
+metadata_source: README.md, package.json
+review_basis: application Next.js avec scripts de développement et de build
+canonical_for: personal-portfolio
+separate_from: besmara-site
