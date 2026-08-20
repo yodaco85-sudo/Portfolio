@@ -20,7 +20,7 @@ export function Hero() {
 
         <img
           src="https://cdn.jsdelivr.net/npm/game-icons-transparent@latest/svgs/lorc/bright-explosion.svg"
-          className="absolute -right-8 -top-12 h-24 w-24 animate-pulse opacity-80 pointer-events-none"
+          className="absolute -right-1 -top-8 h-16 w-16 md:-right-8 md:-top-12 md:h-24 md:w-24 animate-pulse opacity-80 pointer-events-none"
           style={{ filter: "brightness(0)" }}
           alt=""
           aria-hidden="true"
@@ -31,7 +31,7 @@ export function Hero() {
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
-        className="mt-16"
+        className="mt-16 flex w-full justify-center overflow-hidden md:block md:w-auto md:overflow-visible"
       >
         <div className="brutal-border brutal-shadow bg-accent inline-block -rotate-1.5 overflow-hidden whitespace-nowrap rounded-full px-10 py-3 transition-transform duration-300 hover:rotate-0 hover:scale-105">
           <div className="flex animate-marquee gap-8 px-4">

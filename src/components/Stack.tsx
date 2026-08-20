@@ -42,7 +42,7 @@ export function Stack() {
         className="mb-20 flex items-center gap-4"
       >
         <div className="h-1.5 w-24 bg-black"></div>
-        <h2 className="font-[family-name:var(--font-syne)] text-7xl uppercase tracking-tighter">
+        <h2 className="font-[family-name:var(--font-syne)] text-5xl md:text-7xl uppercase tracking-tighter">
           / LE LABO
         </h2>
       </motion.div>
@@ -52,13 +52,13 @@ export function Stack() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="brutal-border brutal-shadow-lg relative group bg-white p-12 lg:col-span-7"
+          className="brutal-border brutal-shadow-lg relative group bg-white p-6 md:p-12 lg:col-span-7"
         >
-          <div className="brutal-border absolute -left-8 -top-8 bg-black px-6 py-2 font-bold text-accent">
+          <div className="brutal-border absolute -left-3 -top-6 md:-left-8 md:-top-8 bg-black px-4 py-2 md:px-6 text-sm md:text-base font-bold text-accent">
             STATUS@SEA:~#
           </div>
 
-          <p className="font-mono text-3xl leading-relaxed bio-text">
+          <p className="font-mono text-xl md:text-3xl leading-relaxed bio-text">
             {profile.pitch.split(" — ").map((part, i) => (
               <span key={i} className={i === 1 ? "bg-accent px-1 font-bold" : ""}>
                 {part}
@@ -67,7 +67,7 @@ export function Stack() {
             ))}
           </p>
 
-          <div className="mt-12 flex items-center justify-between border-t-2 border-black/10 pt-8">
+          <div className="mt-12 flex flex-col items-start gap-6 border-t-2 border-black/10 pt-8 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
             <div className="flex gap-6">
               <a href="https://github.com/yodaco85-sudo" target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-accent-2">
                 <i className="ti ti-brand-github text-4xl"></i>

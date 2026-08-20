@@ -76,10 +76,10 @@ export function IntroGate({ onEnter }: IntroGateProps) {
       </div>
 
       <div className="text-center">
-        <p className="mb-2 font-[family-name:var(--font-syne)] text-[clamp(3.5rem,14vw,9rem)] font-extrabold uppercase leading-[0.85] tracking-tighter">
+        <p className="mb-2 font-[family-name:var(--font-syne)] text-[clamp(2.25rem,14vw,9rem)] font-extrabold uppercase leading-[0.85] tracking-tighter">
           <SplitText text={first} active={loaded} />
         </p>
-        <p className="font-[family-name:var(--font-syne)] text-[clamp(3.5rem,14vw,9rem)] font-extrabold uppercase leading-[0.85] tracking-tighter text-muted">
+        <p className="font-[family-name:var(--font-syne)] text-[clamp(2.25rem,14vw,9rem)] font-extrabold uppercase leading-[0.85] tracking-tighter text-muted">
           <SplitText text={rest.join(" ")} active={loaded} delay={200} />
         </p>
       </div>

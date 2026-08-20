@@ -16,7 +16,7 @@ export default function ContactPage() {
           ← Retour
         </a>
 
-        <h1 className="font-[family-name:var(--font-syne)] text-7xl uppercase tracking-tighter text-accent mb-4">
+        <h1 className="font-[family-name:var(--font-syne)] text-5xl md:text-7xl uppercase tracking-tighter text-accent mb-4">
           CONTACT
         </h1>
         <p className="font-mono text-sm opacity-60 mb-16">

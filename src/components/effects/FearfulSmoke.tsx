@@ -34,11 +34,26 @@ export function FearfulSmoke() {
     const container = containerRef.current;
     if (!container) return;
 
+    // Les blobs fuient le pointeur : souris sur desktop, doigt sur tactile.
     const handleMouseMove = (e: MouseEvent) => {
       mouseRef.current = { x: e.clientX, y: e.clientY };
     };
 
+    const handleTouchMove = (e: TouchEvent) => {
+      const t = e.touches[0];
+      if (t) mouseRef.current = { x: t.clientX, y: t.clientY };
+    };
+
+    // Quand le doigt se lève, on éloigne le point de fuite pour que les
+    // blobs reprennent leur dérive naturelle.
+    const handleTouchEnd = () => {
+      mouseRef.current = { x: -1000, y: -1000 };
+    };
+
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove, { passive: true });
+    window.addEventListener("touchstart", handleTouchMove, { passive: true });
+    window.addEventListener("touchend", handleTouchEnd);
 
     const createBlob = (x?: number, y?: number, size?: number, color?: string) => {
       if (blobsRef.current.length >= MAX_BLOBS) return;
@@ -141,6 +156,9 @@ export function FearfulSmoke() {
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("touchstart", handleTouchMove);
+      window.removeEventListener("touchend", handleTouchEnd);
       cancelAnimationFrame(animationId);
       blobsRef.current.forEach((b) => b.el.remove());
       blobsRef.current = [];
@@ -149,5 +167,5 @@ export function FearfulSmoke() {
 
   if (reduced) return null;
 
-  return <div ref={containerRef} className="gooey-container fixed inset-0 pointer-events-none z-0" aria-hidden="true" />;
+  return <div ref={containerRef} className="gooey-container fixed inset-0 overflow-hidden pointer-events-none z-0" aria-hidden="true" />;
 }

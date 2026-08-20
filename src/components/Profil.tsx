@@ -6,7 +6,7 @@ export function Profil() {
   return (
     <section id="profil" className="bg-black text-white py-32 px-8">
       <div className="mx-auto max-w-[1440px]">
-        <h2 className="font-[family-name:var(--font-syne)] text-8xl uppercase tracking-tighter text-accent mb-20">
+        <h2 className="font-[family-name:var(--font-syne)] text-6xl md:text-8xl uppercase tracking-tighter text-accent mb-20">
           PROFIL
         </h2>
 

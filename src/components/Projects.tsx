@@ -72,7 +72,7 @@ export function Projects() {
     >
       <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-8 mb-20 md:flex-row md:items-end md:justify-between">
         <div>
-          <h2 className="font-[family-name:var(--font-syne)] text-8xl uppercase tracking-tighter text-accent">
+          <h2 className="font-[family-name:var(--font-syne)] text-6xl md:text-8xl uppercase tracking-tighter text-accent">
             PROJETS
           </h2>
         </div>
@@ -104,11 +104,11 @@ export function Projects() {
 
       {/* Mobile scroll wrapper */}
       <div ref={mobileScrollRef} className="overflow-x-auto md:overflow-visible w-full scroll-smooth">
-        <div ref={trackRef} className="project-track flex w-max gap-16 px-16">
+        <div ref={trackRef} className="project-track flex w-max gap-6 px-6 md:gap-16 md:px-16">
           {projects.map((project) => (
             <div
               key={project.id}
-              className="project-card group flex w-[450px] flex-col gap-4"
+              className="project-card group flex w-[80vw] max-w-[420px] flex-col gap-4 md:w-[450px] md:max-w-none"
               data-cursor="hover"
             >
               <div className="number-container brutal-border relative flex aspect-[16/10] items-center justify-center overflow-hidden border-white bg-[#1a1a1a] transition-all duration-500 group-hover:border-accent group-hover:bg-accent">
